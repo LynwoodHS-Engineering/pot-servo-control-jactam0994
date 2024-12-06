@@ -1,0 +1,31 @@
+#include <Servo.h>  
+
+const int potentiometerPin = A0;
+const int servoPin = 9;          
+
+Servo myServo;  
+
+void setup() {
+  Serial.begin(9600);  
+  myServo.attach(servoPin);  
+}
+
+void loop() {
+  int potentiometerValue = analogRead(potentiometerPin);  
+ 
+  int servoPosition = map(potentiometerValue, 0, 1023, 0, 180);
+ 
+  myServo.write(servoPosition);
+ 
+  Serial.print("Potentiometer Value: ");
+  Serial.print(potentiometerValue);
+  Serial.print("\tServo Position: ");
+  Serial.println(servoPosition);
+ 
+  delay(100);  
+}
+
+
+
+
+
